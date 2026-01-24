@@ -27,7 +27,7 @@ CREATE TABLE book(
 CREATE TABLE sale(
     sale_id SERIAL PRIMARY KEY,
     sale_date DATE NOT NULL,
-    total INT(50) NOT NULL,
+    total INT NOT NULL,
     method payment_method NOT NULL,
     seller_id INT NOT NULL,
         CONSTRAINT fk_seller
@@ -35,7 +35,8 @@ CREATE TABLE sale(
                 REFERENCES users(user_id)
 );
 
-CREATE TABLE saleitem(
+CREATE TABLE saleitems(
+    sale_items_id SERIAL PRIMARY KEY,
     sale_id INT NOT NULL,
         CONSTRAINT fk_sale
             FOREIGN KEY(sale_id)
