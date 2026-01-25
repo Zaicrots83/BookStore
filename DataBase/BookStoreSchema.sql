@@ -2,7 +2,7 @@ CREATE TYPE user_role AS ENUM ('admin','seller','storage_manager');
 CREATE TYPE payment_method AS ENUM ('cash','card','online_payment')
 
 CREATE TABLE users(   -- I use users as name cause user is a special word and even if i use "user" it could give me problems later
-    user_id SERIAL PRIMARY_KEY,
+    user_id SERIAL PRIMARY KEY,
     user_name VARCHAR(255) NOT NULL,
     role user_role NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
@@ -40,11 +40,11 @@ CREATE TABLE saleitems(
     sale_id INT NOT NULL,
         CONSTRAINT fk_sale
             FOREIGN KEY(sale_id)
-                REFERENCES sale(sale_id)
+                REFERENCES sale(sale_id),
     book_id INT NOT NULL,
         CONSTRAINT fk_book
             FOREIGN KEY(book_id)
-                REFERENCES book(book_id)
+                REFERENCES book(book_id),
     quantity INT NOT NULL,
     price INT NOT NULL
 );
