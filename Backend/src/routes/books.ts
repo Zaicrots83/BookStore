@@ -24,7 +24,7 @@ router.post("/Books", async (req, res) => {
       Price,
       Url_image,
     } = req.body;
-    const book = await postBook(
+    const postResult = await postBook(
       Book_name,
       Author,
       Release_date,
@@ -34,7 +34,7 @@ router.post("/Books", async (req, res) => {
       Price,
       Url_image,
     );
-    res.status(201).json({ message: "Book inserted" });
+    res.json(postResult)
   } catch (error) {
     console.log("Error inserting the book");
     console.error(error);

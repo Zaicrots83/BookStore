@@ -21,6 +21,10 @@ export async function postBook(
   Url_image: string,
 ) {
   try {
+    const result = await pool.query(`SELECT * FROM book WHERE book_name = $1 AND author = $2`,
+      [Book_name,Author]
+    )
+    if(result.rows.length == 0){
     await pool.query(
       `INSERT INTO book(book_name, author, release_date, edition_number, editorial, stock, price, url_image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) `,
       [
@@ -34,7 +38,9 @@ export async function postBook(
         Url_image,
       ]
     );
-    console.log("Book Created");
+    return ({"message":"Book created"})
+  }
+  return ({"message":"This book already exist"})
   } catch (error) {
     console.log("Something went wrong creating the book");
     console.error(error);

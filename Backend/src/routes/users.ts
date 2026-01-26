@@ -23,7 +23,7 @@ router.post("/User", async (req, res) => {
       Password_Hash,
       Url_image,
     } = req.body;
-    await postUser(
+    const postResult = await postUser(
       User_name,
       Role,
       Phone_number,
@@ -32,8 +32,7 @@ router.post("/User", async (req, res) => {
       Password_Hash,
       Url_image,
     );
-    res.json({ message: "User created" });
-    console.log("User created");
+    res.json(postResult)
   } catch (error) {
     console.error("Error on route user-post" + error);
     res.send("Something went wrong creating the user");
@@ -52,7 +51,7 @@ router.put("/User/:id", async (req, res) => {
       Url_image,
     } = req.body;
     const user_id = Number(req.params.id);
-    await updateUser(
+    const updateResult = await updateUser(
       User_name,
       Role,
       Phone_number,
@@ -62,7 +61,7 @@ router.put("/User/:id", async (req, res) => {
       Url_image,
       user_id,
     );
-    res.send("User updated")
+    res.json(updateResult)
   } catch (error) {
     console.error("Error updating the user " + error )
     res.send("Error updating user")
@@ -72,8 +71,8 @@ router.put("/User/:id", async (req, res) => {
 router.delete("/User/:id", async (req, res) => {
   try {
     const user_id = Number(req.params.id);
-    await deleteUser(user_id);
-    res.send("User deleted");
+    const resultDelete = await deleteUser(user_id);
+    res.json(resultDelete)
   } catch (error) {
     console.error(error);
     res.send("Error deleting the user");
