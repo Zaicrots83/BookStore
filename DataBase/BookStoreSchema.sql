@@ -7,9 +7,9 @@ CREATE TABLE users(   -- I use users as name cause user is a special word and ev
     role user_role NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
     email VARCHAR(255) UNIQUE,
-    hired_date DATE,
-    password_hash TEXT, -- I use text 'cause later ill have to hash the password for security and the hash could be really long 
-    url_image TEXT -- The url of the profile picture
+    hired_date DATE NOT NULL,
+    password_hash TEXT NOT NULL, -- I use text 'cause later ill have to hash the password for security and the hash could be really long 
+    url_image TEXT NOT NULL -- The url of the profile picture
 );
 
 CREATE TABLE book(

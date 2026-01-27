@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-import { getUsers, postUser, deleteUser, updateUser } from "../services/users";
+import { getUsers, postUser, deleteUser, updateUser, login } from "../services/users";
 
 router.get("/User", async (req, res) => {
   try {
@@ -20,7 +20,7 @@ router.post("/User", async (req, res) => {
       Phone_number,
       Email,
       Hired_date,
-      Password_Hash,
+      Password,
       Url_image,
     } = req.body;
     const postResult = await postUser(
@@ -29,7 +29,7 @@ router.post("/User", async (req, res) => {
       Phone_number,
       Email,
       Hired_date,
-      Password_Hash,
+      Password,
       Url_image,
     );
     res.json(postResult)
@@ -78,5 +78,14 @@ router.delete("/User/:id", async (req, res) => {
     res.send("Error deleting the user");
   }
 });
+
+router.post("/Login",async(req, res) => { 
+  try {
+      const {Email, Password} = req.body;
+    await login(Password, Email);
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 export default router;
