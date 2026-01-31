@@ -82,7 +82,10 @@ router.delete("/User/:id", async (req, res) => {
 router.post("/Login",async(req, res) => { 
   try {
       const {Email, Password} = req.body;
-    await login(Password, Email);
+      const result = await login(Email,Password);
+      const token = String(result)
+      res.json({"token" : token})
+      console.log(token)
   } catch (error) {
     console.error(error)
   }

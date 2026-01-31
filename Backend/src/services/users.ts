@@ -1,5 +1,7 @@
 import { pool } from "../Database/connection";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
+import "dotenv/config";
 
 export async function getUsers() {
   try {
@@ -96,13 +98,16 @@ export async function login(Email:string, Password:string) {
     )
     if(checkEMail.rows.length != 0){
       const hashPassword = checkEMail.rows[0].password_hash;
-      bcrypt.compare(Password,hashPassword,(error, result)=>{
-        if(result == true){
-          console.log("This is the password")
+      const isValid = await bcrypt.compare(Password,hashPassword)
+        if(isValid == true){
+          const idUser = checkEMail.rows[0].user_id
+          const userName = checkEMail.rows[0].user_name
+          const secret = process.env.TOKEN
+          var token = jwt.sign({id: idUser, name: userName}, String(secret))
+          return(String(token))
         } else {
-          console.log("This is not the password")
+          return("Please verify the information")
         }
-      })
     }
     else{
       console.log("Some information is wrong, pls verify")
