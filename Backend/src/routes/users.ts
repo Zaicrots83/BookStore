@@ -1,6 +1,12 @@
 import { Router } from "express";
 const router = Router();
-import { getUsers, postUser, deleteUser, updateUser, login } from "../services/users";
+import {
+  getUsers,
+  postUser,
+  deleteUser,
+  updateUser,
+  login,
+} from "../services/users";
 
 router.get("/User", async (req, res) => {
   try {
@@ -32,7 +38,7 @@ router.post("/User", async (req, res) => {
       Password,
       Url_image,
     );
-    res.json(postResult)
+    res.json(postResult);
   } catch (error) {
     console.error("Error on route user-post" + error);
     res.send("Something went wrong creating the user");
@@ -61,10 +67,10 @@ router.put("/User/:id", async (req, res) => {
       Url_image,
       user_id,
     );
-    res.json(updateResult)
+    res.json(updateResult);
   } catch (error) {
-    console.error("Error updating the user " + error )
-    res.send("Error updating user")
+    console.error("Error updating the user " + error);
+    res.send("Error updating user");
   }
 });
 
@@ -72,23 +78,23 @@ router.delete("/User/:id", async (req, res) => {
   try {
     const user_id = Number(req.params.id);
     const resultDelete = await deleteUser(user_id);
-    res.json(resultDelete)
+    res.json(resultDelete);
   } catch (error) {
     console.error(error);
     res.send("Error deleting the user");
   }
 });
 
-router.post("/Login",async(req, res) => { 
-  try {
-      const {Email, Password} = req.body;
-      const result = await login(Email,Password);
-      const token = String(result)
-      res.json({"token" : token})
-      console.log(token)
-  } catch (error) {
-    console.error(error)
+router.post("/Login", async (req, res) => {
+  const { Email, Password } = req.body;
+  const result = await login(Email, Password);
+  const token = result;
+  if (!token) {
+    res.status(401).json({ error: "Invalid information" });
   }
-})
+  else{
+  res.status(201).json({ token: token });
+  }
+});
 
 export default router;

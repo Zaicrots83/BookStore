@@ -1,6 +1,6 @@
 import { pool } from "../Database/connection";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 export async function getUsers() {
@@ -11,7 +11,6 @@ export async function getUsers() {
     console.error("Something went wrong" + error);
   }
 }
-
 
 export async function deleteUser(id_user: number) {
   try {
@@ -91,29 +90,28 @@ export async function postUser(
   }
 }
 
-export async function login(Email:string, Password:string) {
+export async function login(Email: string, Password: string) {
   try {
-    const checkEMail = await pool.query(`SELECT * FROM users WHERE email = $1`,
-      [Email]
-    )
-    if(checkEMail.rows.length != 0){
+    const checkEMail = await pool.query(
+      `SELECT * FROM users WHERE email = $1`,
+      [Email],
+    );
+    if (checkEMail.rows.length != 0) {
       const hashPassword = checkEMail.rows[0].password_hash;
-      const isValid = await bcrypt.compare(Password,hashPassword)
-        if(isValid == true){
-          const idUser = checkEMail.rows[0].user_id
-          const userName = checkEMail.rows[0].user_name
-          const secret = process.env.TOKEN
-          var token = jwt.sign({id: idUser, name: userName}, String(secret))
-          return(String(token))
-        } else {
-          return("Please verify the information")
-        }
-    }
-    else{
-      console.log("Some information is wrong, pls verify")
+      const isValid = await bcrypt.compare(Password, hashPassword);
+      if (isValid == true) {
+        const idUser = checkEMail.rows[0].user_id;
+        const userName = checkEMail.rows[0].user_name;
+        const secret = process.env.TOKEN;
+        var token = jwt.sign({ id: idUser, name: userName }, String(secret));
+        return String(token);
+      } else {
+        return null;
+      }
+    } else {
+      return null;
     }
   } catch (error) {
-    console.error("Something went wrong" + error)
+    return null;
   }
 }
-
