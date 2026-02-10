@@ -1,0 +1,46 @@
+.NavBar{
+    width: 100%;
+    margin: 0px 0px 2% 0px;
+    padding: 0%;
+    height: 10vh;
+    background-color: #fff;
+    outline: 1px solid black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.NavBar ul{
+    display: flex;
+    list-style: none;
+    height: 10vh;
+    margin: 0%;
+    padding: 0%;
+}
+
+.NavBar ul .leftContainer a img{
+    height: 100%;
+}
+
+.leftContainer{
+    width: 50%;
+}
+
+.rigthContainer{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 50%;
+}
+
+.NavBar ul .rigthContainer li{
+    text-align: end;
+    margin-right: 10%;
+    padding: 2%;
+}
+
+.rigthContainer li:hover{
+    background-color: brown;
+    color: #fff;
+    transition: 1s;
+    cursor: pointer;
+}
+

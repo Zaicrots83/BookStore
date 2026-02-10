@@ -102,8 +102,9 @@ export async function login(Email: string, Password: string) {
       if (isValid == true) {
         const idUser = checkEMail.rows[0].user_id;
         const userName = checkEMail.rows[0].user_name;
+        const role = checkEMail.rows[0].role;
         const secret = process.env.TOKEN;
-        var token = jwt.sign({ id: idUser, name: userName }, String(secret));
+        var token = jwt.sign({ id: idUser, name: userName, role:role }, String(secret));
         return String(token);
       } else {
         return null;

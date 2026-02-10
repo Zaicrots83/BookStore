@@ -1,10 +1,12 @@
 import { useState, type ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../Styles/login.module.css";
 import icon from "../assets/BookIcon.jpeg";
 import Swal from "sweetalert2";
 
 const login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,14 +27,18 @@ const login = () => {
         Password: password,
       });
 
+      const role = response.data.token.role
+      console.log(role)
       const token = response.data.token;
       localStorage.setItem("token", token);
-      console.log(token)
+      console.log(token);
+      
       Swal.fire({
         title: "Welcome",
         text: "Your credentials are correct",
         icon: "success",
       });
+      navigate("/AdminHome");
     } catch (error) {
       Swal.fire({
         title: "Error",

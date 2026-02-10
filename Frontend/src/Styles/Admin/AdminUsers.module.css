@@ -1,0 +1,31 @@
+.UsersSection{
+    height: 100vh;
+    background-image: url('../../assets/AdminBackground.jpg');
+    background-position: center;
+}
+
+.Title{
+    font-family: "Bungee", sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+    width: 70%;
+    margin: auto;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.UserCard{
+    background-color: #fff;
+    width: 80%;
+    margin: 2% 10% 2% 10%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+    border-radius: 20px;
+    outline: 2px solid black;
+}
+
+.UserCard h3,p{
+    margin: 0%;
+    padding-left: 5%;
+}

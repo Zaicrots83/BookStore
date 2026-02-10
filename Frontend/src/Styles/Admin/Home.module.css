@@ -1,0 +1,50 @@
+.HomePage{
+    background-image: url('../../assets/AdminBackground.jpg');
+    background-position: center;
+    height: 100vh;
+}
+
+.Title{
+    font-family: "Bungee", sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 80px;
+    width: 70%;
+    margin: auto;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.HomePage .card{
+    background-color: #fff;
+    height: 50vh;
+    width: 30%;
+    margin: 2%;
+    border-radius: 20px;
+    outline: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover{
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: #a09191;
+}
+
+.card h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card img{
+    height:70%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.Options{
+    display: flex;
+    justify-content: space-between;
+}
