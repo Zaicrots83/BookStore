@@ -23,9 +23,39 @@
     padding: 10px;
     border-radius: 20px;
     outline: 2px solid black;
+    display: flex;
 }
 
 .UserCard h3,p{
     margin: 0%;
     padding-left: 5%;
+}
+
+.UserCard button{
+    width: 15%;
+    margin: 0% 1% 0% 1% ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(165, 42, 42);
+    outline: 3px solid black;
+}
+
+.UserCard button:hover{
+    background-color: #fff;
+    transition: 1s;
+}
+
+.User_info{
+    width: 70%;
+}
+
+.AddButton{
+    background-color: white;
+    padding: 20px;
+    margin-left: 10%;
+    font-family: "Bungee", sans-serif;
+}
+
+.AddButton:hover{
+    background-color:rgb(165, 42, 42) ;
+    transition: 1s;
 }

@@ -1,0 +1,61 @@
+.FormPage{
+    background-image: url('../../assets/AdminBackground.jpg');
+    background-position: center;
+    margin: 0%;
+    padding: 0%;
+    height: 100vh;
+}
+
+.FormPage h1{
+    margin: 0%;
+    padding: 0%;
+    text-align: center;
+    color: white;
+    font-family: "Bungee", sans-serif;
+    font-size: 10vh;
+    background-color: black;
+    width: 40%;
+    margin: 0px 30% 1% 30%;
+}
+
+.FormSection{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0% 10% 0% 10%;
+    background-color: rgba(165, 42, 42, 0.8);
+    padding: 2%;
+    outline: 2px solid black;
+    border-radius: 10px;
+}
+
+.FormSection input , select{
+    height: 4vh;
+    width: 80%;
+    margin: 0.5% 10% 0.5% 10%;
+}
+
+.DateSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0px 10% 0px 10%;
+}
+
+.DateSection p{
+    width: 30%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.DateSection input{
+    width: 70%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.FormSection button{
+    width: 80%;
+    margin: 0px 10% 0px 10%;
+}
